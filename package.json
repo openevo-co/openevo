@@ -1,0 +1,59 @@
+{
+  "name": "openevo",
+  "version": "1.0.0",
+  "description": "OpenEvo — Sovereign AI Exoskeleton Engine. Building agents with multi-layered memory and distinct personas.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "openevo": "./dist/index.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./engine": "./dist/engine/core.js",
+    "./memory": "./dist/engine/memory.js",
+    "./providers": "./dist/engine/providers.js",
+    "./agent": "./dist/engine/agent-loader.js",
+    "./skills": "./dist/engine/skill-router.js",
+    "./knowledge": "./dist/engine/knowledge-loader.js",
+    "./budget": "./dist/engine/budget-calculator.js",
+    "./drm": "./dist/drm.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "npx tsx src/index.ts",
+    "test": "node --test dist/**/*.test.js"
+  },
+  "keywords": [
+    "ai",
+    "companion",
+    "openevo",
+    "sovereign",
+    "evo",
+    "memory",
+    "rag",
+    "engine",
+    "wechat",
+    "line",
+    "kakaotalk"
+  ],
+  "author": "Sovereign Labs",
+  "license": "MIT",
+  "homepage": "https://openevo.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openevo-co/openevo"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "inquirer": "^14.0.2"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
