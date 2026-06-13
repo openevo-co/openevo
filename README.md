@@ -62,14 +62,17 @@ Save API costs, especially for non-Latin languages (like Thai) where tokens burn
 ### 6. 💾 Vector-based Memory (`memory/`)
 Conversations are still persistent. The RAG engine recalls relevant past interactions to maintain long-term relationship continuity.
 
-### 7. 💬 Omni-Platform Chat Integrations
-Deploy your sovereign AI companion to any major messaging platform instantly. Out-of-the-box support for:
+### 7. 💬 Multi-Platform Chat Integrations
+Deploy your sovereign AI companion to a major messaging platform. (Note: Can only be active on one platform at a time). Out-of-the-box support for:
 - LINE
 - KakaoTalk
 - Telegram
 - Slack
 - Discord
 - WhatsApp
+
+### 8. 🔄 Data Migration System
+Seamlessly migrate your AI data and memories. Built-in tools for migrating from **OpenClaw** to **OpenEvo**, including full support for the **Hermes** protocol.
 
 ## 📦 Exported Modules
 
