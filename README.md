@@ -18,6 +18,8 @@ npm run dev
 The engine has been entirely rewritten from V0 (4-Phase) to **V1 (7-Phase)**, adding immense capabilities while retaining zero-dependency simplicity.
 
 ### 1. 🎭 7-Layer Persona Engine (`persona/`)
+Configure your model and define your AI's multi-dimensional personality using the following structure:
+```text
 ├── persona/
 │   ├── soul.md          # Core essence & identity
 │   ├── role.md          # Professional role & capabilities
@@ -25,23 +27,14 @@ The engine has been entirely rewritten from V0 (4-Phase) to **V1 (7-Phase)**, ad
 │   ├── user.md          # User context & relationship
 │   ├── rule.md          # Hard constraints & system rules
 │   ├── pulse.md         # Dynamic state & situational awareness
-│   └── agent.md         # Model Config YAML & Core Rule
 │   └── rules.json       # Engine boundaries
 ├── memory/              # Persistent conversation memory (auto-generated)
 ├── src/
 │   └── index.ts         # Entry point
 ├── config.yaml          # LLM provider & model config
 └── .env                 # API keys (never commit this!)
+```
 
-Configure your model and define your AI's multi-dimensional personality using 7 files:
-- `persona/agent.md` (Layer 0: Model Config YAML & Core Rule)
-- `persona/soul.md` (Layer 1: Inner Identity)
-- `persona/role.md` (Layer 2: External Function & Tone)
-- `persona/character.md` (Layer 3: Personality Traits)
-- `persona/user.md` (Layer 4: Target Audience / Commander)
-- `persona/rule.md` (Layer 5: Behavioral Constraints)
-- `persona/pulse.md` (Layer 6: System State / Memory Anchor)
-- `persona/agent.md` (Layer 7: Model Config YAML & Core Rule)  
 ### 2. 🧠 Multi-Provider AI Routing
 Seamlessly switch between cloud and edge models without changing your codebase. Supported providers:
 - `openrouter` (Meta, Mistral, Command, etc.)
