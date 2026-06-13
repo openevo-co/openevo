@@ -21,13 +21,13 @@ The engine has been entirely rewritten from V0 (4-Phase) to **V1 (7-Phase)**, ad
 Configure your model and define your AI's multi-dimensional personality using the following structure:
 ```text
 ├── persona/
-│   ├── soul.md          # Core essence & identity
-│   ├── role.md          # Professional role & capabilities
-│   ├── character.md     # Personality, quirks & tone
-│   ├── user.md          # User context & relationship
-│   ├── rule.md          # Hard constraints & system rules
-│   ├── pulse.md         # Dynamic state & situational awareness
-│   └── rules.json       # Engine boundaries
+│   ├── agent.md         # AI Core Config & Engine Boundaries (Provider/LLM Settings & Engine Scope)
+│   ├── soul.md          # Layer 1: Core essence & inner identity
+│   ├── role.md          # Layer 2: Professional role & external capabilities
+│   ├── character.md     # Layer 3: Personality quirks, likes & dislikes
+│   ├── user.md          # Layer 4: User context & shared relationship history
+│   ├── rule.md          # Layer 5: Hard constraints & behavioral rules
+│   └── pulse.md         # Layer 6: Dynamic state & situational awareness
 ├── memory/              # Persistent conversation memory (auto-generated)
 ├── src/
 │   └── index.ts         # Entry point
