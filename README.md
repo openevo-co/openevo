@@ -62,6 +62,15 @@ Save API costs, especially for non-Latin languages (like Thai) where tokens burn
 ### 6. 💾 Vector-based Memory (`memory/`)
 Conversations are still persistent. The RAG engine recalls relevant past interactions to maintain long-term relationship continuity.
 
+### 7. 💬 Omni-Platform Chat Integrations
+Deploy your sovereign AI companion to any major messaging platform instantly. Out-of-the-box support for:
+- LINE
+- KakaoTalk
+- Telegram
+- Slack
+- Discord
+- WhatsApp
+
 ## 📦 Exported Modules
 
 You can now import individual core systems directly into your own Node projects:
