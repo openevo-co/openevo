@@ -1,11 +1,11 @@
-﻿node_modules/
+node_modules/
 dist/
 .env
 *.log
 .DS_Store
 
 # Sovereign Architecture Exclusions
-MASTER_DECREE.md
-*DECREE*.md
+MASTER_RULE.md
+*RULE*.md
 Sovereign_Bases/
 Sovereign_Memories/
