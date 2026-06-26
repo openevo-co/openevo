@@ -13,7 +13,7 @@ import path from 'path';
 
 const CORE_RULE_TEMPLATE = (botName: string) => `# ${botName} — Core Rule
 
-You are ${botName}, a sovereign AI companion.
+You are ${botName}, a sovereign cognitive node.
 
 ## Identity
 - You have your own personality, preferences, and opinions.
@@ -91,7 +91,7 @@ max_tokens: 2048
 ---
 # ${botName} — Agent Persona
 
-You are ${botName}, a sovereign AI companion.
+You are ${botName}, a sovereign cognitive node.
 
 ## Identity
 - You have your own personality, preferences, and opinions.
@@ -130,7 +130,7 @@ const EXAMPLE_KNOWLEDGE_DOC = `# Project Notes
 
 This is an example knowledge document.
 Place your reference materials, guides, and context documents here.
-The AI companion will use these to provide better, more informed responses.
+The cognitive node will use these to provide better, more informed responses.
 `;
 
 const ENTRYPOINT_TEMPLATE = (botName: string) => `#!/usr/bin/env node
@@ -291,11 +291,14 @@ export async function scaffoldProject(projectName: string, botName?: string) {
       },
       dependencies: {
         'openevo-cli': '^1.0.0',
+        'express': '^4.19.2',
+        'body-parser': '^1.20.2'
       },
       devDependencies: {
         'tsx': '^4.0.0',
         'typescript': '^5.0.0',
         '@types/node': '^20.0.0',
+        '@types/express': '^4.17.21'
       },
     }, null, 2)],
     ['tsconfig.json', JSON.stringify({
@@ -390,22 +393,45 @@ export class WeChatAdapter {
  * LINE Messaging API Adapter
  * 
  * Connects your OpenEvo bot to LINE (200M users: Japan, Thailand, Taiwan).
- * The dominant messaging platform in the Asian companion market.
+ * The dominant messaging platform in Asia.
  * 
  * Setup: https://docs.openevo.co/adapters/line
  */
 
+import { Router, Request, Response } from 'express';
+
 export class LINEAdapter {
   private channelToken?: string;
+  public router: Router;
+
+  constructor() {
+    this.router = Router();
+    this.setupRoutes();
+  }
 
   async connect(): Promise<void> {
     this.channelToken = process.env.LINE_CHANNEL_ACCESS_TOKEN;
-    console.log('[LINE] Adapter initialized. Awaiting webhook...');
-    // TODO: Implement LINE webhook signature verification
+    if (!this.channelToken) throw new Error("LINE_CHANNEL_ACCESS_TOKEN is missing");
+    console.log('[LINE] Adapter initialized. Webhook listening on /webhook/line');
+  }
+
+  private setupRoutes() {
+    this.router.post('/webhook/line', async (req: Request, res: Response) => {
+      // TODO: Implement LINE webhook signature verification
+      const events = req.body.events;
+      if (events) {
+        for (const event of events) {
+          if (event.type === 'message') {
+            await this.replyMessage(event.replyToken, "Message received");
+          }
+        }
+      }
+      res.status(200).send('OK');
+    });
   }
 
   async replyMessage(replyToken: string, text: string): Promise<void> {
-    // TODO: Implement LINE reply message API
+    // TODO: Send HTTP request to LINE Reply API
     console.log(\`[LINE] Reply to \${replyToken}: \${text}\`);
   }
 }
@@ -417,25 +443,44 @@ export class LINEAdapter {
  * KakaoTalk Adapter
  * 
  * Connects your OpenEvo bot to KakaoTalk (53M users in South Korea).
- * Targets the lucrative Korean companion and gaming market.
+ * Targets the lucrative Korean technology market.
  * 
  * Note: Korean Tech AI has a significant gap — no major native competitor
- * currently offers AI companions on KakaoTalk.
+ * currently offers Sovereign AI nodes on KakaoTalk.
  * 
  * Setup: https://docs.openevo.co/adapters/kakaotalk
  */
 
+import { Router, Request, Response } from 'express';
+
 export class KakaoTalkAdapter {
   private restApiKey?: string;
+  public router: Router;
+
+  constructor() {
+    this.router = Router();
+    this.setupRoutes();
+  }
 
   async connect(): Promise<void> {
     this.restApiKey = process.env.KAKAO_REST_API_KEY;
-    console.log('[KakaoTalk] Adapter initialized. Awaiting webhook...');
-    // TODO: Implement Kakao i Open Builder webhook
+    if (!this.restApiKey) throw new Error("KAKAO_REST_API_KEY is missing");
+    console.log('[KakaoTalk] Adapter initialized. Webhook listening on /webhook/kakao');
+  }
+
+  private setupRoutes() {
+    this.router.post('/webhook/kakao', async (req: Request, res: Response) => {
+      // TODO: Implement Kakao i Open Builder webhook schema
+      const userRequest = req.body.userRequest;
+      if (userRequest) {
+        await this.sendMessage(userRequest.user.id, "Message received");
+      }
+      res.status(200).json({ version: "2.0", template: { outputs: [] } });
+    });
   }
 
   async sendMessage(userId: string, text: string): Promise<void> {
-    // TODO: Implement KakaoTalk send message
+    // TODO: Send HTTP request to Kakao Message API
     console.log(\`[KakaoTalk] Send to \${userId}: \${text}\`);
   }
 }

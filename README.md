@@ -1,14 +1,14 @@
 # 🧬 OpenEvo CLI V1.0.0 — The Sovereign Exoskeleton
 
-OpenEvo is an open-source, multi-provider AI Engine for building sovereign AI companions. Version 1.0.0 introduces the **7-Phase Sovereign Pipeline**, giving your AI long-term memory, dynamic skills, custom knowledge, and smart token budgeting.
+OpenEvo is an open-source, multi-provider Cognitive Engine for building sovereign, enterprise-grade AI agents. Version 1.0.0 introduces the **7-Phase Sovereign Pipeline**, equipping your AI infrastructure with vector memory, dynamic skills, custom knowledge bases, and smart token routing.
 
 ## 🚀 Quick Start
 
 ```bash
-# Create a new AI companion
-npx create-openevo my-bot
+# Initialize a Sovereign Cognitive Node
+npx create-openevo sovereign-node
 
-cd my-bot
+cd sovereign-node
 npm install
 npm run dev
 ```

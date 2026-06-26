@@ -10,11 +10,12 @@ import { sendTelemetry } from './telemetry.js';
  * 
  * Usage:
  *   npx create-openevo                     → Interactive setup
- *   npx create-openevo --name "Elysia"     → Quick setup with custom bot name
- *   npx create-openevo my-bot              → Quick setup with project name
+ *   npx create-openevo --name "Nexus"      → Quick setup with custom node name
+ *   npx create-openevo sovereign-node      → Quick setup with project name
  *   openevo add wechat                     → Add WeChat adapter
  *   openevo add line                       → Add LINE adapter
  *   openevo add kakao                      → Add KakaoTalk adapter
+ *   openevo add telegram                   → Add Telegram adapter
  */
 
 const BANNER = `
@@ -28,14 +29,14 @@ const program = new Command();
 
 program
   .name('create-openevo')
-  .description('Create and manage sovereign AI companions')
+  .description('Create and manage sovereign cognitive nodes')
   .version('1.0.0');
 
 // Main: init command (default when user runs `npx create-openevo`)
 program
   .command('init [project-name]', { isDefault: true })
-  .description('Initialize a new OpenEvo companion project')
-  .option('-n, --name <bot-name>', 'Custom name for your AI companion')
+  .description('Initialize a new OpenEvo cognitive node project')
+  .option('-n, --name <node-name>', 'Custom name for your sovereign node')
   .action(async (projectName, options) => {
     console.log(BANNER);
 
@@ -49,13 +50,13 @@ program
           type: 'input' as const,
           name: 'projectName',
           message: '📁 Project directory name:',
-          default: 'my-evo-bot',
+          default: 'openevo-instance',
         }] : []),
         ...(!botName ? [{
           type: 'input' as const,
           name: 'botName',
-          message: '🤖 Name your AI companion:',
-          default: 'EVO',
+          message: '🤖 Name your cognitive node:',
+          default: 'CORE',
         }] : []),
       ]);
 

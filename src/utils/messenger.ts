@@ -13,7 +13,7 @@ export class Messenger extends EventEmitter {
   }
 
   /** ฟังข้อความจาก agent อื่น */
-  on(type: string, listener: (msg: any) => void) {
+  onMessage(type: string, listener: (msg: any) => void) {
     this.addListener(`msg:${this.agentId}:${type}`, listener);
   }
 }
